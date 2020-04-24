@@ -8,7 +8,7 @@
             "icon": "minio-{0}.png",
             "protocol": "http",
             "url": "/",
-            "port": "9901", 
+            "port": "9000", 
             "grantPrivilege": "local"
         }
     }
