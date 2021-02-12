@@ -6,9 +6,10 @@ minio_src := go/src/github.com/minio/minio
 
 .PHONY: build i386 arm7
 build:
-	@echo "Usage: make init; make arm7|i386"
+	@echo "Usage: make init; make arm7|i386|arm64"
 
 arm7: minio_arm7 pkg_arm7
+arm64: minio_arm64 pkg_arm64
 i386: minio_i386 pkg_i386
 
 .PHONY: clean
@@ -42,7 +43,7 @@ artwork:
 			cp /src/1_create_package/ui/minio-256.png /src/2_create_project/PACKAGE_ICON.PNG; '
 
 
-last_release := $(shell cd $(minio_src) 2>&1 /dev/null && git tag | sort -r | gawk '/RELEASE/{print$$1; exit;}' || echo unknown)
+last_release := $(shell cd $(minio_src) && git tag | sort -r | gawk '/RELEASE/{print$$1; exit;}' || echo unknown)
 date_release := $(shell echo $(last_release) | awk -F'T' '{gsub("RELEASE-", "", $$1); gsub("-",".", $$1); print$$1}')
 pkg_version := $(subst RELEASE.,,$(date_release))
 
@@ -56,6 +57,9 @@ _docker_ctr = golang:stretch
 minio_arm7: go_env=--env GOARCH=arm --env GOARM=7
 minio_arm7: pkg_arch=arm-7
 minio_arm7: minio
+minio_arm64: go_env=--env GOARCH=arm64 
+minio_arm64: pkg_arch=arm64
+minio_arm64: minio
 minio_i386: go_env=--env GOARCH=386
 minio_i386: pkg_arch=i386
 minio_i386: minio
@@ -76,6 +80,9 @@ minio:
 pkg_arm7: pkg_arch=arm-7
 pkg_arm7: syno_arch=armada370 armada375 armada38x armadaxp alpine\/alpine4k comcerto2k monaco
 pkg_arm7: pkg
+pkg_arm64: pkg_arch=arm64
+pkg_arm64: syno_arch=rtd1296
+pkg_arm64: pkg
 pkg_i386: pkg_arch=i386
 pkg_i386: syno_arch="evansport"
 pkg_i386: pkg
