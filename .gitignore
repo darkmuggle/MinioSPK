@@ -3,5 +3,7 @@
 **/.DS_Store
 1_create_package/minio/minio
 2_create_project/INFO
+2_create_project/*.PNG
 go/**
-minio*linux*arm
+minio*linux*arm*
+minio*.spk
