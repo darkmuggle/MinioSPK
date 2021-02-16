@@ -22,7 +22,7 @@ Here Be Dragons
 
 Removing the Minio installation from the NAS will result in your data being deleted.
 
-THIS ONLY WORKS FOR ARM-7 or i386 NAS's right now.
+THIS ONLY WORKS FOR ARM-7/ARM64 or i386 NAS's right now.
 
 Due to the inclusion of Minio's Art Work, re-distribution of the SPK may violate their terms. Please see LICENSE-Artwork for more information..
 
@@ -37,7 +37,7 @@ Getting Started
 You will need:
 * Docker
 * Git
-* A Synology NAS
+* A Synology NAS based on one of the chipsets in [arch.desc](arch.desc) file
 
 Docker is used to as the build system and to manage dependencies, specifically:
 * Artwork is fetched remotely. This requires tooling to get the artwork, unzip to extract it and ImageMagick to transform the icon sizes.
@@ -45,10 +45,11 @@ Docker is used to as the build system and to manage dependencies, specifically:
 
 After cloning/forking this repo:
 * run `make init`. This step fetches the latest release of Minio and the icons.
-* run `make arm7` or `make i386`. During this step, a docker container will cross compile Minio. It will take a bit.
+* run `make arm7` or `make arm64` or `make i386`. During this step, a docker container will cross compile Minio. It will take a bit.
 * Go to your NAS's package manager
 * Click Manually uplaod
 * Follow the dialogs
+* Take care to choose a good `ADMIN_KEY` and `SECRET_KEY` 
 * Login at `http://<NAS IP>:<port>` where `<port>` was the one you selected in the dialogs.
 
 Pull-Requests Accepted
