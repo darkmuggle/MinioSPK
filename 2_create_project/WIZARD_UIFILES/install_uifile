@@ -18,7 +18,7 @@
           },
           {
             "key": "MINIO_ACCESS_KEY",
-            "desc": "the MINIO_ADMIN_KEY value",
+            "desc": "the MINIO_ACCESS_KEY value",
             "defaultVaule": "admin",
             "validator": {
               "allowBlank": false,
