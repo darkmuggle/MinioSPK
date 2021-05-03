@@ -35,6 +35,8 @@ Getting Started
 ===
 
 You will need:
+* Make
+* gawk
 * Docker
 * Git
 * A Synology NAS based on one of the chipsets in [arch.desc](arch.desc) file
@@ -46,10 +48,10 @@ Docker is used to as the build system and to manage dependencies, specifically:
 After cloning/forking this repo:
 * run `make init`. This step fetches the latest release of Minio and the icons.
 * run `make arm7` or `make arm64` or `make i386`. During this step, a docker container will cross compile Minio. It will take a bit.
-* Go to your NAS's package manager
-* Click Manually uplaod
+* Go to your NAS's package manager. This should be Synology's "Package Center".
+* Click `Manual Install`
 * Follow the dialogs
-* Take care to choose a good `ADMIN_KEY` and `SECRET_KEY` 
+* Take care to choose a good `ACCESS_KEY` and `SECRET_KEY` 
 * Login at `http://<NAS IP>:<port>` where `<port>` was the one you selected in the dialogs.
 
 Pull-Requests Accepted
