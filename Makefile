@@ -53,7 +53,7 @@ info:
 
 .PHONY: minio minio_%
 _docker_cmd = docker run --rm -it -v $(my_d)/$(minio_src):/$(minio_src) -v $(my_d):/out --workdir=/$(minio_src)
-_docker_ctr = golang:stretch
+_docker_ctr = golang:1.21
 minio_arm7: go_env=--env GOARCH=arm --env GOARM=7
 minio_arm7: pkg_arch=arm-7
 minio_arm7: minio
