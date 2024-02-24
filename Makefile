@@ -74,7 +74,7 @@ minio:
 		--env GO111MODULE=on \
 		$(go_env) \
 		$(_docker_ctr) \
-		sh -c "go get ./... && go build -tags kqeue --ldflags '$(LDFLAGS)' -o /out/minio-$(pkg_version)-linux-$(pkg_arch)"
+		sh -c "go get ./... && go build -buildvcs=false -tags kqeue --ldflags '$(LDFLAGS)' -o /out/minio-$(pkg_version)-linux-$(pkg_arch)"
 
 .PHONY: pkg pkg_%
 pkg_arm7: pkg_arch=arm-7
