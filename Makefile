@@ -64,7 +64,7 @@ minio_i386: go_env=--env GOARCH=386
 minio_i386: pkg_arch=i386
 minio_i386: minio
 
-minio: LDFLAGS=$(shell $(_docker_cmd) $(_docker_ctr) bash -c "go run buildscripts/gen-ldflags.go")
+minio: LDFLAGS=$(shell $(_docker_cmd) $(_docker_ctr) bash -c "git config --global --add safe.directory '*' && go run buildscripts/gen-ldflags.go")
 minio:
 	@echo "Working on $(last_release)"
 	@echo "Cross-compiling in Docker, this will take a few minutes"
